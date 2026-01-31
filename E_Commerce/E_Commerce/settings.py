@@ -4,6 +4,7 @@ Django settings for E_Commerce project.
 
 from pathlib import Path
 from environ import Env, environ
+from datetime import timedelta
 import os
 import sys
 
@@ -150,7 +151,8 @@ REST_FRAMEWORK = {
 }
 
 # Simple JWT Settings
+# FIX: Lifetime values must be timedelta objects, not integers.
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': env.int('ACCESS_TOKEN_LIFETIME', default=5),
-    'REFRESH_TOKEN_LIFETIME': env.int('REFRESH_TOKEN_LIFETIME', default=1440),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=env.int('ACCESS_TOKEN_LIFETIME', default=5)),
+    'REFRESH_TOKEN_LIFETIME': timedelta(minutes=env.int('REFRESH_TOKEN_LIFETIME', default=1440)),
 }
