@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     # Third party apps
     'rest_framework',
     'rest_framework_simplejwt',
+    'drf_spectacular',
 
     # Local apps
     'apps.accounts',
@@ -148,6 +149,13 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
     ),
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'E_Commerce API',
+    'DESCRIPTION': 'API documentation for E_Commerce',
+    'VERSION': '1.0.0',
 }
 
 # Simple JWT Settings
