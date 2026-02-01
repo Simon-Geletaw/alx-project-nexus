@@ -165,8 +165,7 @@ SPECTACULAR_SETTINGS = {
 }
 
 # Simple JWT Settings
-# FIX: Lifetime values must be timedelta objects, not integers.
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=env.int('ACCESS_TOKEN_LIFETIME', default=5)),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=env.int('ACCESS_TOKEN_LIFETIME', default=50000)),
     'REFRESH_TOKEN_LIFETIME': timedelta(minutes=env.int('REFRESH_TOKEN_LIFETIME', default=1440)),
 }
