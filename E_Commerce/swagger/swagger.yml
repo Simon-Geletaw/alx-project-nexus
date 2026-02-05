@@ -1,0 +1,195 @@
+openapi: '3.0.3'
+info:
+  description: E-Commerce API That Handles User Accounts, Products,Categories.
+  title: E-Commerce
+  version: '1.0'
+  contact:
+    name: Simon Geletaw
+    email: 'simongeletaw2@gmail.com'
+servers:
+  - url: http://127.0.0.1:8000
+    description: Local server
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+security:
+  - BearerAuth: []
+tags:
+  - name: 'Token'
+    description: 'Token generation and refresh endpoints'
+  - name: 'refresh'
+    description: 'Token refresh endpoint'
+  - name: 'admin'
+    description: 'Admin related endpoints'
+  - name: 'api'
+    description: 'Token related endpoints'
+  - name: 'accounts'
+    description: 'User account management endpoints'
+  - name: 'products'
+    description: 'Product management endpoints'
+  - name: 'categories'
+    description: 'Category management endpoints'
+paths:
+  /admin/:
+    get:
+      responses:
+        '200':
+          description: OK
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+        
+  /api/:
+    post:
+      tags: 
+        - 'Token'
+        - 'refresh'
+      summary: 'Token get and refresh endpoint'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: User email
+                password:
+                  type: string
+                  description: User password
+              required:
+                - email
+                - password
+      responses:
+        '200':
+          description: OK
+        '403':
+          description: Forbidden'
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+  /accounts/Me/:
+    get:
+      tags:
+        - 'accounts'
+      summary: 'Retrieve detailes of the authenticated user'
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+  /accounts/register/:
+    post:
+      tags:
+        - 'accounts'
+      summary: 'Register a new user'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: User email
+                password:
+                  type: string
+                  description: User password
+                is_staff:
+                  type: boolean
+                  description: Is the user staff
+                is_active:
+                  type: boolean
+                  description: Is the user active by default it is true
+                first_name:
+                  type: string
+                  description: User first name
+                last_name:
+                  type: string
+                  description: User last name
+                phone_number:
+                  type: string
+                  description: User phone number
+              required:
+                - email
+                - password
+                - is_staff
+                - phone_number
+                - first_name
+                - last_name
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+        '500':
+          description: Internal Server Error
+  /accounts/change-password/:
+    post:
+      tags:
+        - 'accounts'
+      summary: 'Change password for the authenticated user'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                old_password:
+                  type: string
+                  description: Current password of the user
+                new_password:
+                  type: string
+                  description: New password for the user
+                confirm_new_password:
+                  type: string
+                  description: Confirmation of the new password, must match new_password
+              required:
+                - old_password
+                - new_password
+                - confirm_new_password
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Old password is incorrect or new passwords do not match
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+  /accounts/user:
+    get:
+      tags:
+        - 'products'
+      summary: 'Retrieve a list of all products'
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
