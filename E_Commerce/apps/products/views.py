@@ -27,3 +27,7 @@ class ProductUpdateView(generics.UpdateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductUpdateSerializer
     permission_classes = (permissions.IsAdminUser,)
+class ProductDeleteView(generics.DestroyAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductDetailSerializer
+    permission_classes = (permissions.IsAdminUser,)
