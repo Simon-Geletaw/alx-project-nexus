@@ -1,4 +1,7 @@
-openapi: '3.0.3'
+railway variables set DEBUG=False
+railway variables set ALLOWED_HOSTS=your-app.up.railway.app
+railway variables set CSRF_TRUSTED_ORIGINS=https://your-app.up.railway.app
+railway variables set DATABASE_URL=<railway-provided-url>openapi: '3.0.3'
 info:
   description: E-Commerce API That Handles User Accounts, Products,Categories.
   title: E-Commerce

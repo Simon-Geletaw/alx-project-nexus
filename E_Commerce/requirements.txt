@@ -11,3 +11,4 @@ django-extensions
 drf-spectacular
 django-debug-toolbar
 PyJWT
+gunicorn
