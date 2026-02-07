@@ -1,0 +1,13 @@
+django
+djangorestframework
+django-cors-headers
+psycopg2-binary
+django-environ
+djangorestframework-simplejwt
+django-filter
+django-storages
+boto3
+django-extensions
+drf-spectacular
+django-debug-toolbar
+PyJWT
