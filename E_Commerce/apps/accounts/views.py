@@ -21,11 +21,6 @@ class UserListView(generics.ListAPIView):
 class MeView(generics.RetrieveUpdateAPIView):
 	serializer_class = UserSerializer
 	permission_classes = (permissions.IsAuthenticated,)
-<<<<<<< Updated upstream
- 
-=======
-
->>>>>>> Stashed changes
 	def get_object(self):
 		return self.request.user
 
