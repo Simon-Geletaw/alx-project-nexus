@@ -7,6 +7,7 @@ from environ import Env, environ
 from datetime import timedelta
 import os
 import sys
+
 env = Env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -139,7 +140,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Custom User Model
-# The format must be 'app_label.ModelName'.
+# The format must be 'app_label.ModelName'. 
 # Even though the path is apps.accounts, the app_label is 'accounts'.
 AUTH_USER_MODEL = 'accounts.AccountsUser'
 
@@ -166,6 +167,6 @@ SPECTACULAR_SETTINGS = {
 
 # Simple JWT Settings
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=env.int('ACCESS_TOKEN_LIFETIME', default=5)),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=env.int('ACCESS_TOKEN_LIFETIME', default=50000)),
     'REFRESH_TOKEN_LIFETIME': timedelta(minutes=env.int('REFRESH_TOKEN_LIFETIME', default=1440)),
 }

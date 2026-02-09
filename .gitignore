@@ -1,14 +1,4 @@
-# Python
-.venv/
-venv/
 __pycache__/
 *.pyc
-.env
-
-# IDE
+.venv/
 .idea/
-.vscode/
-
-# OS
-.DS_Store
-Thumbs.db
