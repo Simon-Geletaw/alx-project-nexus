@@ -15,7 +15,6 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-<<<<<<< Updated upstream
 from django.urls import path, include
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
@@ -26,11 +25,4 @@ urlpatterns = [
     path('accounts/', include('apps.accounts.urls')),
     path('categories/', include('apps.categories.urls')),
     path('products/', include('apps.products.urls')),
-=======
-from django.urls import include, path
-
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/accounts/', include('apps.accounts.urls')),
->>>>>>> Stashed changes
 ]
