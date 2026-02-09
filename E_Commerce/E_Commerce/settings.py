@@ -4,14 +4,10 @@ Django settings for E_Commerce project.
 
 from pathlib import Path
 from environ import Env, environ
-<<<<<<< Updated upstream
 from datetime import timedelta
 import os
 import sys
 
-=======
-import os
->>>>>>> Stashed changes
 env = Env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -23,11 +19,7 @@ sys.path.append(os.path.join(BASE_DIR, 'apps'))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
-<<<<<<< Updated upstream
 # Read environment variables
-=======
-# SECURITY WARNING: keep the secret key used in production secret!
->>>>>>> Stashed changes
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 SECRET_KEY = env('SECRET_KEY')
@@ -146,19 +138,11 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-<<<<<<< Updated upstream
 
 # Custom User Model
 # The format must be 'app_label.ModelName'. 
 # Even though the path is apps.accounts, the app_label is 'accounts'.
 AUTH_USER_MODEL = 'accounts.AccountsUser'
-=======
-AUTH_USER_MODEL = 'apps.accounts.AccountsUser'
-INSTALLED_APPS = [
-    # Other apps
-    'rest_framework_simplejwt',
-]
->>>>>>> Stashed changes
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -167,7 +151,6 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
     ),
-<<<<<<< Updated upstream
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     'DEFAULT_FILTER_BACKENDS': (
         'django_filters.rest_framework.DjangoFilterBackend',
@@ -187,10 +170,3 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=env.int('ACCESS_TOKEN_LIFETIME', default=50000)),
     'REFRESH_TOKEN_LIFETIME': timedelta(minutes=env.int('REFRESH_TOKEN_LIFETIME', default=1440)),
 }
-=======
-}
-SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': env.int('ACCESS_TOKEN_LIFETIME', default=5),  # in minutes
-    'REFRESH_TOKEN_LIFETIME': env.int('REFRESH_TOKEN_LIFETIME', default=1440),  # in minutes (1 day)
-}
->>>>>>> Stashed changes
